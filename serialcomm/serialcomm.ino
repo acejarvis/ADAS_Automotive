@@ -5,6 +5,7 @@
  */
 byte buttonPin[8]= {0,1,2,3,4,5,6,7};//initialize I/O ports
 int dp = 0;//counter
+int eyeFocus;
 
 //handsOn analysis
 int handsOnTest(){
@@ -61,7 +62,7 @@ void alarm(int color){
   delay(150);
   }
   else digitalWrite(color_pin, HIGH);
-  
+  int wheel_score = color;
   
 }
 
@@ -91,12 +92,10 @@ void loop() {
     else alarm(2);
    
     //receive eyetracking result
-    /*if(Serial.available()>0){
-      if(Serial.read() == 2) alarm(2);
-    */  
-    
-    
-    Serial.println(wheel_score);//output the distraction status from 0 - 2
-    delay(40);// define the fresh rate at 25Hz
+   /* if(Serial.available()>0){
+        eyeFocus = Serial.read();
+    } 
+    */
+   Serial.println(wheel_score);//output the distraction status from 0 - 2
+    delay(20);// define the fresh rate at 25Hz
 }
-
